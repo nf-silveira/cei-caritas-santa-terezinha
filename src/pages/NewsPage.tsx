@@ -1,5 +1,6 @@
 import Alert from '../components/common/Alert'
 import PageHeader from '../components/common/PageHeader'
+import NewsBanner from '../components/institutional/NewsBanner'
 import NewsCard from '../components/institutional/NewsCard'
 import { getNews } from '../services/newsService'
 import '../styles/site-pages.css'
@@ -19,6 +20,8 @@ function NewsPage() {
         As notícias são genéricas e ilustram apenas a comunicação pública da unidade. Avisos e assuntos internos ficam
         restritos ao portal.
       </Alert>
+
+      <NewsBanner />
 
       <section className="site-section" aria-label="Lista de notícias">
         <div className="site-grid site-grid--three">

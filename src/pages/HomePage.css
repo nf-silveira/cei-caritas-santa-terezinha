@@ -70,31 +70,23 @@
   color: var(--color-secondary);
 }
 
-.home-hero__art {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-4);
+.home-hero__media {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background-color: var(--color-surface);
+  background-color: var(--color-primary-soft);
   box-shadow: var(--shadow-sm);
 }
 
-.home-hero__logo {
+.home-hero__photo {
+  display: block;
   width: 100%;
-  max-width: 22rem;
-  height: auto;
-  margin-inline: auto;
-  border-radius: var(--radius-md);
-}
-
-.home-hero__caption {
-  margin: 0;
-  color: var(--color-muted);
-  font-size: var(--text-xs);
-  text-align: center;
-  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
 }
 
 /* Grades de conteúdo */
@@ -189,6 +181,15 @@
     gap: var(--space-6);
   }
 
+  .home-hero__media {
+    aspect-ratio: 1 / 1;
+    align-self: center;
+  }
+
+  .home-hero__photo {
+    object-position: 64% 45%;
+  }
+
   .home-contact {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -211,6 +212,10 @@
 }
 
 @media (min-width: 1024px) {
+  .home-hero__media {
+    aspect-ratio: 4 / 3;
+  }
+
   .home-grid--three {
     grid-template-columns: repeat(3, 1fr);
   }

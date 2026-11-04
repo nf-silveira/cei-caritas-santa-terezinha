@@ -4,6 +4,7 @@ import Card from '../components/common/Card'
 import SectionHeader from '../components/common/SectionHeader'
 import IdentityGrid from '../components/institutional/IdentityGrid'
 import InstitutionPrinciples from '../components/institutional/InstitutionPrinciples'
+import NewsBanner from '../components/institutional/NewsBanner'
 import NewsCard from '../components/institutional/NewsCard'
 import { siteImages } from '../data/siteImages'
 import { getInstitution } from '../services/institutionService'
@@ -45,16 +46,17 @@ function HomePage() {
           </ul>
         </div>
 
-        <div className="home-hero__art">
+        <picture className="home-hero__media">
+          <source media="(max-width: 767px)" srcSet={siteImages.heroMobile.src} />
           <img
-            src={siteImages.logo.src}
-            alt={siteImages.logo.alt}
-            className="home-hero__logo"
-            width={900}
-            height={600}
+            src={siteImages.heroDesktop.src}
+            alt="Criança sorrindo durante atividade em sala de educação infantil"
+            className="home-hero__photo"
+            width={1536}
+            height={857}
+            fetchPriority="high"
           />
-          <p className="home-hero__caption">Identidade visual ilustrativa do projeto</p>
-        </div>
+        </picture>
       </section>
 
       <section aria-labelledby="home-apresentacao">
@@ -122,6 +124,7 @@ function HomePage() {
             </Button>
           }
         />
+        <NewsBanner />
         <div className="home-grid home-grid--three">
           {news.map((post) => (
             <NewsCard key={post.id} post={post} />

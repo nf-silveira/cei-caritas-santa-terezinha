@@ -1,5 +1,8 @@
 import logo from '../assets/logo-cei.png'
 import logoHeader from '../assets/logo-header.png'
+import heroDesktopImage from '../assets/hero-desktop.jpg'
+import heroMobileImage from '../assets/hero-mobile.jpg'
+import newsImage from '../assets/imagem-noticias.jpg'
 import caritasMark from '../assets/Site santa terezinha 1.jpeg'
 import santaTeresinha from '../assets/site santa terezinha 2.jpeg'
 import brasao from '../assets/site santa terezinha 3.jpeg'
@@ -16,6 +19,18 @@ export const siteImages = {
   headerLogo: {
     src: logoHeader,
     alt: 'Símbolo do CEI Cáritas Santa Terezinha, com crianças, livro e Santa Teresinha',
+  },
+  heroDesktop: {
+    src: heroDesktopImage,
+    alt: 'Criança sorrindo enquanto brinca com blocos coloridos em sala de educação infantil',
+  },
+  heroMobile: {
+    src: heroMobileImage,
+    alt: 'Criança sorrindo durante atividade com papéis coloridos em sala de educação infantil',
+  },
+  news: {
+    src: newsImage,
+    alt: 'Crianças pintando com as mãos durante uma atividade de arte',
   },
   caritas: {
     src: caritasMark,
