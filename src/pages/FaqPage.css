@@ -1,0 +1,97 @@
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.faq-item {
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: var(--touch-min);
+  padding-block: var(--space-3);
+  color: var(--color-primary-dark);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-size: var(--text-h3);
+  font-weight: var(--weight-regular);
+  line-height: 1;
+}
+
+.faq-item[open] summary::after {
+  content: '–';
+}
+
+.faq-item summary:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+.faq-item p {
+  margin: 0 0 var(--space-4);
+  max-width: var(--content-measure);
+  color: var(--color-neutral-text);
+}
+
+.testimonial-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.testimonial blockquote {
+  margin: 0;
+}
+
+.testimonial__quote {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--color-accent);
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.testimonial blockquote p {
+  margin: 0;
+  max-width: none;
+  color: var(--color-text);
+}
+
+.testimonial cite {
+  display: block;
+  margin-top: var(--space-3);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  font-style: normal;
+}
+
+@media (min-width: 768px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

@@ -12,11 +12,12 @@ function NewsPage() {
       <PageHeader
         eyebrow="Comunicação"
         title="Notícias e comunicados"
-        description="Avisos, projetos e novidades da rotina escolar, organizados por data de publicação."
+        description="Projetos, cultura e novidades da rotina escolar, organizados por data de publicação."
       />
 
       <Alert variant="info" title="Conteúdo demonstrativo">
-        As notícias desta página são fictícias e foram escritas apenas para ilustrar a área de comunicação.
+        As notícias são genéricas e ilustram apenas a comunicação pública da unidade. Avisos e assuntos internos ficam
+        restritos ao portal.
       </Alert>
 
       <section className="site-section" aria-label="Lista de notícias">

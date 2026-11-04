@@ -142,6 +142,10 @@
   gap: var(--space-4);
 }
 
+.home-contact > * {
+  min-width: 0;
+}
+
 .home-contact__list {
   display: flex;
   flex-direction: column;
@@ -159,6 +163,11 @@
   align-items: flex-start;
   gap: var(--space-3);
   color: var(--color-text);
+}
+
+.home-contact__list li span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .home-contact__list svg {
@@ -180,7 +189,6 @@
     gap: var(--space-6);
   }
 
-  .home-grid--two,
   .home-contact {
     grid-template-columns: repeat(2, 1fr);
   }

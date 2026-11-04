@@ -17,6 +17,7 @@ export const portalRoles: PortalRole[] = [
       { id: 'presencas', label: 'Presenças', description: 'Registro diário de entrada, saída e ausências.' },
       { id: 'mensalidades', label: 'Mensalidades', description: 'Boletos simulados e histórico de pagamentos.' },
       { id: 'autorizacoes', label: 'Autorizações', description: 'Saídas, passeios e medicamentos.' },
+      { id: 'calendario', label: 'Calendário', description: 'Eventos, reuniões e dias sem aula.' },
     ],
   },
   {
@@ -31,6 +32,7 @@ export const portalRoles: PortalRole[] = [
       { id: 'chamada', label: 'Chamada', description: 'Presença do dia por turma.' },
       { id: 'planejamento', label: 'Planejamento', description: 'Atividades e materiais por semana.' },
       { id: 'registros', label: 'Registros', description: 'Observações pedagógicas do dia.' },
+      { id: 'calendario', label: 'Calendário', description: 'Eventos, reuniões e dias sem aula.' },
     ],
   },
   {
@@ -45,6 +47,7 @@ export const portalRoles: PortalRole[] = [
       { id: 'documentos', label: 'Documentos', description: 'Pendências de documentação das famílias.' },
       { id: 'atendimentos', label: 'Atendimentos', description: 'Fila simulada de contatos e retornos.' },
       { id: 'cadastros', label: 'Cadastros', description: 'Dados fictícios de crianças e responsáveis.' },
+      { id: 'calendario', label: 'Calendário', description: 'Eventos, reuniões e dias sem aula.' },
     ],
   },
   {
@@ -59,6 +62,8 @@ export const portalRoles: PortalRole[] = [
       { id: 'unidades', label: 'Unidades', description: 'Comparativo entre as unidades fictícias.' },
       { id: 'equipe', label: 'Equipe', description: 'Quadro fictício de colaboradores.' },
       { id: 'comunicados', label: 'Comunicados', description: 'Publicações para toda a instituição.' },
+      { id: 'calendario', label: 'Calendário', description: 'Eventos, reuniões e dias sem aula.' },
+      { id: 'design-system', label: 'Design System', description: 'Tokens, tipografia e componentes da identidade visual.' },
     ],
   },
 ]
@@ -76,9 +81,9 @@ export const portalWorkspaces: PortalWorkspace[] = [
       { id: 'autorizacoes', label: 'Autorizações pendentes', value: '2', hint: 'Passeio e uso de imagem', tone: 'neutral' },
     ],
     agenda: [
-      { id: 'agenda-1', date: '12 de maio', title: 'Reunião de responsáveis', detail: 'Unidade Centro · 18h30 · sala multiuso' },
-      { id: 'agenda-2', date: '16 de maio', title: 'Entrega do portfólio do semestre', detail: 'Mini-Grupo II · com a professora da turma' },
-      { id: 'agenda-3', date: '23 de maio', title: 'Festa das famílias', detail: 'Pátio da unidade · entrada gratuita' },
+      { id: 'agenda-1', date: '12 de novembro', title: 'Reunião de responsáveis', detail: 'Sala multiuso · 18h30' },
+      { id: 'agenda-2', date: '20 de novembro', title: 'Dia da Consciência Negra', detail: 'Feriado · sem aula' },
+      { id: 'agenda-3', date: '22 de novembro', title: 'Festa da família', detail: 'Pátio da unidade · 9h às 13h' },
     ],
     notices: [
       { id: 'aviso-1', title: 'Cardápio da semana atualizado', body: 'A nutricionista fictícia revisou o almoço de quinta-feira.', time: 'Hoje, 08h10', tone: 'neutral' },
@@ -104,8 +109,8 @@ export const portalWorkspaces: PortalWorkspace[] = [
     ],
     agenda: [
       { id: 'agenda-1', date: 'Hoje', title: 'Chamada do período da manhã', detail: 'Turma fictícia · 18 crianças' },
-      { id: 'agenda-2', date: '13 de maio', title: 'Entrega do planejamento semanal', detail: 'Coordenação pedagógica · formato digital' },
-      { id: 'agenda-3', date: '15 de maio', title: 'Reunião de equipe docente', detail: 'Sala dos professores · 17h' },
+      { id: 'agenda-2', date: '12 de novembro', title: 'Reunião de responsáveis', detail: 'Sala multiuso · 18h30' },
+      { id: 'agenda-3', date: '25 de novembro', title: 'Conselho de classe', detail: 'Fechamento do bimestre · sem aula' },
     ],
     notices: [
       { id: 'aviso-1', title: 'Autorização de passeio recebida', body: 'Uma família fictícia enviou a autorização pendente.', time: 'Hoje, 07h40', tone: 'positive' },
@@ -131,8 +136,8 @@ export const portalWorkspaces: PortalWorkspace[] = [
     ],
     agenda: [
       { id: 'agenda-1', date: 'Hoje', title: 'Fechamento da lista de espera', detail: 'Revisão fictícia por unidade' },
-      { id: 'agenda-2', date: '14 de maio', title: 'Envio de documentos à diretoria', detail: 'Relatório mensal simulado' },
-      { id: 'agenda-3', date: '20 de maio', title: 'Plantão de matrículas', detail: 'Atendimento estendido até 19h' },
+      { id: 'agenda-2', date: '12 de novembro', title: 'Reunião de responsáveis', detail: 'Apoio à recepção das famílias · 18h30' },
+      { id: 'agenda-3', date: '20 de novembro', title: 'Dia da Consciência Negra', detail: 'Feriado · sem atendimento' },
     ],
     notices: [
       { id: 'aviso-1', title: 'Nova solicitação de matrícula', body: 'Uma família fictícia solicitou vaga no berçário.', time: 'Hoje, 09h20', tone: 'neutral' },
@@ -158,8 +163,8 @@ export const portalWorkspaces: PortalWorkspace[] = [
     ],
     agenda: [
       { id: 'agenda-1', date: 'Hoje', title: 'Reunião de diretoria', detail: 'Indicadores fictícios do trimestre' },
-      { id: 'agenda-2', date: '18 de maio', title: 'Visita técnica à Unidade Jardim', detail: 'Acompanhamento pedagógico simulado' },
-      { id: 'agenda-3', date: '28 de maio', title: 'Conselho institucional', detail: 'Apresentação do relatório demonstrativo' },
+      { id: 'agenda-2', date: '25 de novembro', title: 'Conselho de classe', detail: 'Fechamento do bimestre · sem aula' },
+      { id: 'agenda-3', date: '18 de dezembro', title: 'Encerramento do ano letivo', detail: 'Último dia de atividades pedagógicas' },
     ],
     notices: [
       { id: 'aviso-1', title: 'Ocupação acima da média', body: 'A Unidade Vila Nova ultrapassou 90% das vagas fictícias.', time: 'Hoje, 07h50', tone: 'positive' },

@@ -44,7 +44,7 @@
 
 .portal-page__metrics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-3);
 }
 
@@ -183,7 +183,18 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* Quatro indicadores por perfil: em duas colunas fecham 2x2 sem sobrar card órfão. */
+  .portal-page__metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .portal-page__actions .ds-btn {
     flex: 0 1 auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .portal-page__metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

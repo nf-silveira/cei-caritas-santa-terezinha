@@ -67,7 +67,11 @@ function RoleDashboardPage() {
       </section>
 
       <div className="portal-page__columns">
-        <Card title="Agenda demonstrativa" subtitle={unit ? `Compromissos de ${unit.name}` : undefined}>
+        <Card
+          title="Agenda demonstrativa"
+          subtitle={unit ? `Compromissos de ${unit.name}` : undefined}
+          footer={<Link to={`/portal/${role.id}/calendario`}>Abrir calendário completo</Link>}
+        >
           <ul className="portal-agenda">
             {workspace.agenda.map((item) => (
               <li key={item.id}>

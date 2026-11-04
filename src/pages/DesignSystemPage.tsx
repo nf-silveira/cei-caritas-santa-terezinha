@@ -260,11 +260,11 @@ function DesignSystemPage() {
           id="ds-navegacao"
           eyebrow="Componentes"
           title="Navegação"
-          description="O componente NavMenu no cabeçalho vira um menu suspenso no celular e uma barra horizontal a partir de 768px."
+          description="O componente NavMenu no cabeçalho vira um menu suspenso no celular e uma barra horizontal a partir de 1200px."
         />
         <Card title="Como testar" subtitle="Comportamento responsivo">
           <p>
-            Reduza a janela abaixo de 768px para ver o botão de menu, o fechamento por Esc e o clique fora. Os destinos
+            Reduza a janela abaixo de 1200px para ver o botão de menu, o fechamento por Esc e o clique fora. Os destinos
             ativos são indicados com fundo azul e texto branco, além do atributo de acessibilidade correspondente.
           </p>
         </Card>

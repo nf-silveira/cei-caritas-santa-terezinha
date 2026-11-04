@@ -55,9 +55,7 @@ function ContactPage() {
 
           <section className="contact-map" aria-labelledby="contato-mapa">
             <h3 id="contato-mapa">Como chegar</h3>
-            <p className="contact-map__caption">
-              Mapa ilustrativo do Google Maps. A localização não corresponde a uma unidade real.
-            </p>
+            <p className="contact-map__caption">Mapa da unidade no Google Maps.</p>
 
             <div className="contact-map__frame">
               <iframe
@@ -74,8 +72,9 @@ function ContactPage() {
             </a>
           </section>
 
-          <Alert variant="warning" title="Dados fictícios">
-            Endereço, telefone e e-mail são ilustrativos. Nenhum contato real deve ser feito por estes canais.
+          <Alert variant="info" title="Envio simulado">
+            O formulário abaixo é demonstrativo e não encaminha mensagens. Para falar com a secretaria, use o telefone
+            ou o e-mail acima.
           </Alert>
         </section>
 
@@ -123,7 +122,7 @@ function ContactPage() {
                 id="contato-assunto"
                 name="assunto"
                 label="Assunto"
-                placeholder="Ex.: Matrícula na Unidade Centro"
+                placeholder="Ex.: Matrícula no Berçário"
               />
               <FormTextarea
                 id="contato-mensagem"

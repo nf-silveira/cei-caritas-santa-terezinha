@@ -21,13 +21,17 @@ function MainLayout() {
         <div className="page-container site-header__inner">
           <Link to="/" className="site-header__brand" aria-label={`${institution.name} — página inicial`}>
             <img
-              src={siteImages.logo.src}
+              src={siteImages.headerLogo.src}
               alt=""
               className="site-header__logo"
-              width={900}
-              height={600}
+              width={397}
+              height={435}
               aria-hidden="true"
             />
+            <span className="site-header__brand-text">
+              <span className="site-header__brand-name">CEI CARITAS</span>
+              <span className="site-header__brand-subtitle">Sta. Terezinha</span>
+            </span>
           </Link>
 
           <NavMenu
@@ -50,7 +54,8 @@ function MainLayout() {
           <div className="site-footer__brand">
             <p className="site-footer__about">{institution.summary}</p>
             <p className="site-footer__demo">
-              Projeto demonstrativo, sem vínculo oficial. Todos os dados, endereços e contatos são fictícios.
+              Projeto demonstrativo. O formulário de contato e o portal usam dados simulados; os canais de contato são
+              os oficiais da unidade.
             </p>
 
             <ul className="site-footer__symbols">
@@ -95,7 +100,9 @@ function MainLayout() {
           <div className="site-footer__column">
             <h2 className="site-footer__title">Atendimento</h2>
             <p className="site-footer__text">{institution.hours}</p>
-            <p className="site-footer__text">Atendimento em período integral para bebês e crianças de 0 a 4 anos.</p>
+            <p className="site-footer__text">
+              Berçário, Mini-Grupo I e Mini-Grupo II, em período integral, para crianças de 0 a 4 anos.
+            </p>
           </div>
         </div>
 

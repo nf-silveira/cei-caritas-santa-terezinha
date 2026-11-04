@@ -106,6 +106,8 @@
     grid-template-columns: 16.5rem minmax(0, 1fr);
     gap: var(--space-6);
     align-items: start;
+    /* Mesmo recuo lateral do cabeçalho, para a barra não encostar na borda. */
+    padding-inline: var(--container-padding);
   }
 
   .portal-shell__sidebar {

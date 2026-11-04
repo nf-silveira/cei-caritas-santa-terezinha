@@ -15,7 +15,8 @@
   align-items: flex-end;
   min-height: 200px;
   height: clamp(180px, 32vh, 240px);
-  padding: var(--space-4);
+  /* Espaço extra embaixo para o crédito da foto não encostar no texto. */
+  padding: var(--space-4) var(--space-4) calc(var(--space-4) + 1.25rem);
   overflow: hidden;
   background-color: var(--color-primary-dark);
 }
@@ -282,7 +283,7 @@
 @media (min-width: 768px) {
   .login__visual {
     height: clamp(220px, 30vh, 300px);
-    padding: var(--space-6);
+    padding: var(--space-6) var(--space-6) calc(var(--space-6) + 0.75rem);
   }
 
   .login__access {

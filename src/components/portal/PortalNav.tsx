@@ -13,6 +13,8 @@ import {
   Users,
   Wallet,
   CalendarDays,
+  CalendarRange,
+  Palette,
 } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import type { PortalRole } from '../../types/portal'
@@ -34,6 +36,8 @@ const moduleIcons: Record<string, LucideIcon> = {
   indicadores: BarChart3,
   unidades: Building2,
   equipe: Users,
+  calendario: CalendarRange,
+  'design-system': Palette,
 }
 
 interface PortalNavProps {

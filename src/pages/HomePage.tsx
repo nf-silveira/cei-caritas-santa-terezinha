@@ -2,23 +2,17 @@ import { Clock, LogIn, Mail, MapPin, Phone, Sparkles } from 'lucide-react'
 import Button from '../components/common/Button'
 import Card from '../components/common/Card'
 import SectionHeader from '../components/common/SectionHeader'
-import EventCard from '../components/institutional/EventCard'
 import IdentityGrid from '../components/institutional/IdentityGrid'
 import InstitutionPrinciples from '../components/institutional/InstitutionPrinciples'
 import NewsCard from '../components/institutional/NewsCard'
-import UnitCard from '../components/institutional/UnitCard'
 import { siteImages } from '../data/siteImages'
-import { getUpcomingEvents } from '../services/eventService'
 import { getInstitution } from '../services/institutionService'
 import { getLatestNews } from '../services/newsService'
-import { getUnits } from '../services/unitService'
 import './HomePage.css'
 
 function HomePage() {
   const institution = getInstitution()
-  const units = getUnits()
   const news = getLatestNews(3)
-  const events = getUpcomingEvents(2)
 
   return (
     <div className="home">
@@ -46,7 +40,7 @@ function HomePage() {
             </li>
             <li>
               <Sparkles size={18} aria-hidden="true" />
-              Berçário e mini-grupos
+              Berçário e Mini-Grupos I e II
             </li>
           </ul>
         </div>
@@ -116,31 +110,12 @@ function HomePage() {
         <IdentityGrid />
       </section>
 
-      <section aria-labelledby="home-unidades">
-        <SectionHeader
-          id="home-unidades"
-          eyebrow="Unidades"
-          title="Três unidades, o mesmo cuidado"
-          description="Unidades demonstrativas, com endereços e contatos fictícios."
-          actions={
-            <Button variant="ghost" to="/unidades">
-              Todas as unidades
-            </Button>
-          }
-        />
-        <div className="home-grid home-grid--three">
-          {units.map((unit) => (
-            <UnitCard key={unit.id} unit={unit} />
-          ))}
-        </div>
-      </section>
-
       <section aria-labelledby="home-noticias">
         <SectionHeader
           id="home-noticias"
           eyebrow="Notícias e comunicados"
           title="O que acontece na creche"
-          description="Conteúdos demonstrativos, criados para ilustrar a área de notícias."
+          description="Projetos e novidades da rotina escolar."
           actions={
             <Button variant="ghost" to="/noticias">
               Todas as notícias
@@ -154,39 +129,16 @@ function HomePage() {
         </div>
       </section>
 
-      <section aria-labelledby="home-eventos">
-        <SectionHeader
-          id="home-eventos"
-          eyebrow="Próximos eventos"
-          title="Agenda da comunidade escolar"
-          description="Datas ilustrativas para demonstração do calendário."
-          actions={
-            <Button variant="ghost" to="/eventos">
-              Ver agenda
-            </Button>
-          }
-        />
-        <div className="home-grid home-grid--two">
-          {events.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))}
-        </div>
-      </section>
-
       <section className="home-cta" aria-labelledby="home-matriculas">
         <div className="home-cta__text">
           <h2 id="home-matriculas">Informações sobre matrículas</h2>
           <p>
-            As matrículas são organizadas por unidade, com visita agendada e conversa com a coordenação pedagógica. Os
-            contatos desta página são fictícios.
+            As matrículas são feitas na própria unidade, com visita agendada e conversa com a coordenação pedagógica.
           </p>
         </div>
         <div className="home-cta__actions">
           <Button size="lg" to="/contato">
             Falar sobre matrículas
-          </Button>
-          <Button size="lg" variant="outline" to="/unidades">
-            Ver unidades
           </Button>
         </div>
       </section>

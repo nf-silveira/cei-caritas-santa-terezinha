@@ -84,7 +84,7 @@
   width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .ds-nav__toggle {
     display: none;
   }

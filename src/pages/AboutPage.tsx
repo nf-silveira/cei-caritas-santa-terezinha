@@ -45,8 +45,8 @@ function AboutPage() {
               continuada ao longo do ano. O planejamento é coletivo e acompanha o desenvolvimento de cada turma.
             </p>
             <p>
-              <strong>Aviso:</strong> este texto é ilustrativo. Nomes, endereços, telefones e indicadores desta página
-              são fictícios e não correspondem a dados oficiais.
+              <strong>Aviso:</strong> este é um projeto demonstrativo. Textos institucionais e indicadores são
+              ilustrativos; os canais de contato são os oficiais da unidade.
             </p>
           </div>
 

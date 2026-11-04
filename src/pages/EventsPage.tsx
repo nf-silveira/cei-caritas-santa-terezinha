@@ -11,12 +11,13 @@ function EventsPage() {
     <div className="site-page">
       <PageHeader
         eyebrow="Agenda"
-        title="Próximos eventos"
-        description="Reuniões, festas e mostras organizadas pela unidade ao longo do período letivo."
+        title="Eventos abertos à comunidade"
+        description="Festas e mostras organizadas pela unidade ao longo do período letivo."
       />
 
-      <Alert variant="info" title="Agenda ilustrativa">
-        Datas, horários e locais são fictícios e não correspondem ao calendário oficial da instituição.
+      <Alert variant="info" title="Agenda pública ilustrativa">
+        Datas, horários e locais são fictícios. Reuniões internas, conselhos e dias sem aula ficam no calendário do
+        portal.
       </Alert>
 
       <section className="site-section" aria-label="Lista de eventos">

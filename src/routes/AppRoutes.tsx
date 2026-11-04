@@ -4,15 +4,17 @@ import MainLayout from '../layout/MainLayout'
 import PortalLayout from '../layout/PortalLayout'
 import AboutPage from '../pages/AboutPage'
 import ContactPage from '../pages/ContactPage'
-import DesignSystemPage from '../pages/DesignSystemPage'
 import EventsPage from '../pages/EventsPage'
+import FaqPage from '../pages/FaqPage'
 import HomePage from '../pages/HomePage'
 import NewsPage from '../pages/NewsPage'
 import NotFoundPage from '../pages/NotFoundPage'
+import WorkWithUsPage from '../pages/WorkWithUsPage'
+import PortalCalendarPage from '../pages/portal/PortalCalendarPage'
+import PortalDesignSystemPage from '../pages/portal/PortalDesignSystemPage'
 import PortalLoginPage from '../pages/portal/PortalLoginPage'
 import PortalModulePage from '../pages/portal/PortalModulePage'
 import RoleDashboardPage from '../pages/portal/RoleDashboardPage'
-import UnitsPage from '../pages/UnitsPage'
 
 /** Entrada do portal: leva ao painel do perfil ativo ou à tela de acesso. */
 function PortalEntry() {
@@ -27,11 +29,11 @@ function AppRoutes() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/sobre" element={<AboutPage />} />
-        <Route path="/unidades" element={<UnitsPage />} />
         <Route path="/noticias" element={<NewsPage />} />
         <Route path="/eventos" element={<EventsPage />} />
+        <Route path="/duvidas" element={<FaqPage />} />
+        <Route path="/trabalhe-conosco" element={<WorkWithUsPage />} />
         <Route path="/contato" element={<ContactPage />} />
-        <Route path="/design-system" element={<DesignSystemPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
 
@@ -40,6 +42,8 @@ function AppRoutes() {
       <Route path="/portal" element={<PortalLayout />}>
         <Route index element={<PortalEntry />} />
         <Route path=":role" element={<RoleDashboardPage />} />
+        <Route path=":role/calendario" element={<PortalCalendarPage />} />
+        <Route path=":role/design-system" element={<PortalDesignSystemPage />} />
         <Route path=":role/:module" element={<PortalModulePage />} />
         <Route path="*" element={<PortalEntry />} />
       </Route>

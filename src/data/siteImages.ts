@@ -1,4 +1,5 @@
 import logo from '../assets/logo-cei.png'
+import logoHeader from '../assets/logo-header.png'
 import caritasMark from '../assets/Site santa terezinha 1.jpeg'
 import santaTeresinha from '../assets/site santa terezinha 2.jpeg'
 import brasao from '../assets/site santa terezinha 3.jpeg'
@@ -11,6 +12,10 @@ export const siteImages = {
   logo: {
     src: logo,
     alt: 'Logotipo do CEI Cáritas Santa Terezinha, com crianças, livro e Santa Teresinha',
+  },
+  headerLogo: {
+    src: logoHeader,
+    alt: 'Símbolo do CEI Cáritas Santa Terezinha, com crianças, livro e Santa Teresinha',
   },
   caritas: {
     src: caritasMark,
