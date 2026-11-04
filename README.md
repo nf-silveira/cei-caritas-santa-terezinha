@@ -19,7 +19,7 @@ Protótipo demonstrativo de uma plataforma digital para uma instituição de edu
 npm install
 ```
 
-> Observação: o projeto usa `typescript@~7.0.2` junto com `typescript-eslint`, cujo peer dependency ainda não aceita essa versão. Por isso a instalação atual exige `npm install --legacy-peer-deps`.
+> O TypeScript está fixado em `~6.0.3` para ficar dentro do peer dependency do `typescript-eslint` (`>=4.8.4 <6.1.0`), que ainda não suporta o TypeScript 7.
 
 ## Execução
 
