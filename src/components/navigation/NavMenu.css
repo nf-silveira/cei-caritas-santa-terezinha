@@ -90,7 +90,8 @@
   }
 
   .ds-nav__panel {
-    display: block;
+    display: flex;
+    align-items: center;
     position: static;
     padding: 0;
     border: 0;
@@ -100,12 +101,15 @@
 
   .ds-nav__list {
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     gap: var(--space-1);
   }
 
   .ds-nav__cta {
     margin-top: 0;
     margin-left: var(--space-3);
+    flex-shrink: 0;
   }
 
   .ds-nav__cta .ds-btn {

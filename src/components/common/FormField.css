@@ -15,6 +15,24 @@
   color: var(--color-danger);
 }
 
+.ds-field__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ds-field__control--trailing .ds-field__input {
+  /* Reserva espaço para o botão interno não cobrir o texto digitado. */
+  padding-right: 3.25rem;
+}
+
+.ds-field__trailing {
+  position: absolute;
+  right: var(--space-2);
+  display: flex;
+  align-items: center;
+}
+
 .ds-field__input {
   width: 100%;
   min-height: var(--touch-min);

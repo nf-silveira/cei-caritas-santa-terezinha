@@ -1,17 +1,18 @@
 import { useState, type FormEvent } from 'react'
-import { ArrowRight, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Eye, EyeOff } from 'lucide-react'
 import { Link, Navigate } from 'react-router-dom'
 import Alert from '../../components/common/Alert'
-import Badge from '../../components/common/Badge'
 import Button from '../../components/common/Button'
 import FormField from '../../components/common/FormField'
 import { usePortalSession } from '../../context/PortalSessionContext'
+import { portalLoginImage } from '../../data/portalLoginImages'
 import { siteImages } from '../../data/siteImages'
 import { getPortalRoles } from '../../services/portalService'
 import { getInstitution } from '../../services/institutionService'
+import type { PortalRoleId } from '../../types/portal'
 import './PortalLoginPage.css'
 
-type Feedback = 'idle' | 'recovery' | 'submit'
+type Feedback = 'idle' | 'recovery'
 
 interface FormErrors {
   email?: string
@@ -25,6 +26,8 @@ function PortalLoginPage() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [roleId, setRoleId] = useState<PortalRoleId>(roles[0].id)
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [errors, setErrors] = useState<FormErrors>({})
   const [feedback, setFeedback] = useState<Feedback>('idle')
 
@@ -54,122 +57,123 @@ function PortalLoginPage() {
       return
     }
 
-    setFeedback('submit')
+    // Demonstração: nenhuma credencial é validada ou enviada. Abre a área do perfil escolhido.
+    login(roleId)
   }
 
   return (
-    <div className="portal-login">
-      <section className="portal-login__aside">
-        <Link to="/" className="portal-login__brand">
-          <img
-            src={siteImages.logo.src}
-            alt={`${institution.name} — página inicial`}
-            className="portal-login__logo"
-            width={900}
-            height={600}
-          />
-        </Link>
+    <div className="login">
+      <section className="login__visual" aria-labelledby="login-boas-vindas">
+        <img src={portalLoginImage.src} alt={portalLoginImage.alt} className="login__visual-image" />
 
-        <p className="portal-login__eyebrow">Portal demonstrativo</p>
-        <h1 className="portal-login__title">{institution.name}</h1>
-        <p className="portal-login__tagline">{institution.tagline}</p>
+        <div className="login__visual-content">
+          <p className="login__product">Portal Caritas</p>
+          <h1 className="login__welcome" id="login-boas-vindas">
+            Olá, família!
+          </h1>
+          <p className="login__welcome-text">
+            Um espaço de conexão, cuidado e acompanhamento da jornada escolar.
+          </p>
+        </div>
 
-        <ul className="portal-login__highlights">
-          <li>
-            <ShieldCheck size={18} aria-hidden="true" />
-            Nenhuma credencial real é solicitada ou validada.
-          </li>
-          <li>
-            <ShieldCheck size={18} aria-hidden="true" />
-            Todos os nomes, turmas e valores são fictícios.
-          </li>
-          <li>
-            <ShieldCheck size={18} aria-hidden="true" />
-            O portal demonstra apenas a estrutura visual do produto.
-          </li>
-        </ul>
-
-        <Badge tone="warning">Ambiente de demonstração</Badge>
-
-        <p className="portal-login__back">
-          <Link to="/">Voltar ao site público</Link>
-        </p>
+        <p className="login__visual-credit">{portalLoginImage.credit}</p>
       </section>
 
-      <section className="portal-login__panel" aria-labelledby="portal-login-acesso">
-        <h2 className="portal-login__panel-title" id="portal-login-acesso">
-          Acessar o portal
-        </h2>
-        <p className="portal-login__panel-hint">
-          Preencha os campos com dados fictícios. O formulário ilustra o fluxo, sem autenticação real.
-        </p>
+      <section className="login__access" aria-labelledby="login-titulo">
+        <div className="login__form-wrap">
+          <Link to="/" className="login__mark" aria-label={`${institution.name} — voltar ao site institucional`}>
+            <img src={siteImages.logo.src} alt="" className="login__mark-image" width={900} height={600} />
+          </Link>
 
-        <form className="portal-login__form" onSubmit={handleSubmit} noValidate>
-          <FormField
-            id="portal-email"
-            label="E-mail"
-            type="email"
-            autoComplete="email"
-            value={email}
-            hint={`Ex.: ${roles[0].demoUserEmail}`}
-            error={errors.email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-          />
+          <p className="login__institution">{institution.name}</p>
+          <h2 className="login__title" id="login-titulo">
+            Acesse seu portal
+          </h2>
+          <p className="login__subtitle">Entre para acompanhar as novidades e a jornada escolar.</p>
 
-          <FormField
-            id="portal-senha"
-            label="Senha"
-            type="password"
-            autoComplete="current-password"
-            value={password}
-            hint="Qualquer valor é aceito nesta demonstração."
-            error={errors.password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
+          <form className="login__form" onSubmit={handleSubmit} noValidate>
+            <FormField
+              id="login-email"
+              label="E-mail ou usuário"
+              type="email"
+              autoComplete="username"
+              inputMode="email"
+              value={email}
+              error={errors.email}
+              onChange={(event) => setEmail(event.target.value)}
+              required
+            />
 
-          <div className="portal-login__actions">
-            <Button type="submit" fullWidth iconRight={<ArrowRight size={18} />}>
+            <FormField
+              id="login-senha"
+              label="Senha"
+              type={isPasswordVisible ? 'text' : 'password'}
+              autoComplete="current-password"
+              value={password}
+              error={errors.password}
+              onChange={(event) => setPassword(event.target.value)}
+              required
+              trailing={
+                <button
+                  type="button"
+                  className="login__reveal"
+                  aria-pressed={isPasswordVisible}
+                  onClick={() => setIsPasswordVisible((visible) => !visible)}
+                >
+                  {isPasswordVisible ? <EyeOff size={18} aria-hidden="true" /> : <Eye size={18} aria-hidden="true" />}
+                  <span className="visually-hidden">
+                    {isPasswordVisible ? 'Ocultar senha' : 'Mostrar senha'}
+                  </span>
+                </button>
+              }
+            />
+
+            <p className="login__recovery">
+              <button type="button" className="login__link" onClick={() => setFeedback('recovery')}>
+                Esqueceu sua senha?
+              </button>
+            </p>
+
+            {feedback === 'recovery' ? (
+              <Alert variant="info" title="Recuperação indisponível">
+                Este recurso não está disponível na demonstração. Nenhum e-mail é enviado e nenhuma senha é
+                armazenada.
+              </Alert>
+            ) : null}
+
+            <div className="login__profile">
+              <label className="login__profile-label" htmlFor="login-perfil">
+                Perfil de demonstração
+              </label>
+              <select
+                id="login-perfil"
+                className="login__profile-select"
+                value={roleId}
+                onChange={(event) => setRoleId(event.target.value as PortalRoleId)}
+              >
+                {roles.map((role) => (
+                  <option key={role.id} value={role.id}>
+                    {role.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <Button type="submit" size="lg" fullWidth iconRight={<ArrowRight size={18} />}>
               Entrar
             </Button>
-            <button type="button" className="portal-login__link" onClick={() => setFeedback('recovery')}>
-              Esqueci minha senha
-            </button>
-          </div>
-        </form>
+          </form>
 
-        {feedback === 'submit' ? (
-          <Alert variant="info" title="Acesso não autenticado">
-            Este formulário não cria sessão real. Escolha um dos perfis de demonstração abaixo para explorar o portal.
-          </Alert>
-        ) : null}
-
-        {feedback === 'recovery' ? (
-          <Alert variant="info" title="Recuperação simulada">
-            Em um sistema real, um e-mail de redefinição seria enviado. Aqui nenhuma mensagem é disparada.
-          </Alert>
-        ) : null}
-
-        <div className="portal-login__profiles">
-          <h3 className="portal-login__profiles-title">Entrar com um perfil de demonstração</h3>
-          <p className="portal-login__profiles-hint">
-            Cada perfil abre um conjunto diferente de áreas. Nenhuma senha é necessária.
+          <p className="login__demo-note">
+            Acesso demonstrativo. Nenhuma credencial real é solicitada, validada ou armazenada.
           </p>
 
-          <ul className="portal-login__roles">
-            {roles.map((role) => (
-              <li key={role.id}>
-                <button type="button" className="portal-login__role" onClick={() => login(role.id)}>
-                  <span className="portal-login__role-text">
-                    <span className="portal-login__role-label">Entrar como {role.label.toLowerCase()}</span>
-                    <span className="portal-login__role-description">{role.description}</span>
-                  </span>
-                  <ArrowRight size={18} aria-hidden="true" className="portal-login__role-icon" />
-                </button>
-              </li>
-            ))}
-          </ul>
+          <p className="login__back">
+            <Link to="/" className="login__back-link">
+              <ArrowLeft size={16} aria-hidden="true" />
+              Voltar ao site institucional
+            </Link>
+          </p>
         </div>
       </section>
     </div>
