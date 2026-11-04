@@ -5,6 +5,8 @@ export const institutionData: Institution = {
   name: 'CEI Cáritas Santa Terezinha',
   tagline: 'Educação, cuidado e desenvolvimento na primeira infância.',
   address: 'Rua das Acácias, 000 — Bairro Fictício, São Paulo/SP',
+  // Mapa ilustrativo. Troque pela consulta do endereço real ao publicar a versão oficial.
+  mapQuery: 'São Paulo, SP',
   phone: '(00) 0000-0000',
   email: 'contato@exemplo.invalid',
   hours: 'Segunda a sexta, das 7h às 17h',

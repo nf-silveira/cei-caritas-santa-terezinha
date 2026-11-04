@@ -48,15 +48,6 @@ function MainLayout() {
       <footer className="site-footer">
         <div className="page-container site-footer__grid">
           <div className="site-footer__brand">
-            <img
-              src={siteImages.logo.src}
-              alt=""
-              className="site-footer__logo"
-              width={900}
-              height={600}
-              loading="lazy"
-              aria-hidden="true"
-            />
             <p className="site-footer__about">{institution.summary}</p>
             <p className="site-footer__demo">
               Projeto demonstrativo, sem vínculo oficial. Todos os dados, endereços e contatos são fictícios.
@@ -110,6 +101,13 @@ function MainLayout() {
 
         <div className="page-container site-footer__bottom">
           <p>© {new Date().getFullYear()} CEI Cáritas Santa Terezinha · Protótipo demonstrativo</p>
+          <p className="site-footer__credit">
+            Desenvolvido por{' '}
+            <a href="https://github.com/nf-silveira" target="_blank" rel="noopener noreferrer">
+              nf-silveira
+              <span className="visually-hidden"> no GitHub (abre em nova aba)</span>
+            </a>
+          </p>
         </div>
       </footer>
     </div>

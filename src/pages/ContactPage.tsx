@@ -13,6 +13,10 @@ function ContactPage() {
   const institution = getInstitution()
   const [submitted, setSubmitted] = useState(false)
 
+  const mapQuery = encodeURIComponent(institution.mapQuery)
+  const mapEmbedUrl = `https://www.google.com/maps?q=${mapQuery}&hl=pt-BR&z=13&output=embed`
+  const mapExternalUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setSubmitted(true)
@@ -121,6 +125,27 @@ function ContactPage() {
           </form>
         </section>
       </div>
+
+      <section className="contact-map" aria-labelledby="contato-mapa">
+        <h2 id="contato-mapa">Como chegar</h2>
+        <p className="contact-map__caption">
+          Mapa ilustrativo do Google Maps. A localização não corresponde a uma unidade real.
+        </p>
+
+        <div className="contact-map__frame">
+          <iframe
+            src={mapEmbedUrl}
+            title={`Mapa do Google Maps com a localização de ${institution.name}`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+
+        <a className="contact-map__link" href={mapExternalUrl} target="_blank" rel="noopener noreferrer">
+          Abrir no Google Maps
+          <span className="visually-hidden"> (abre em nova aba)</span>
+        </a>
+      </section>
     </div>
   )
 }
