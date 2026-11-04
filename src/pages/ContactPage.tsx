@@ -53,6 +53,27 @@ function ContactPage() {
             </li>
           </ul>
 
+          <section className="contact-map" aria-labelledby="contato-mapa">
+            <h3 id="contato-mapa">Como chegar</h3>
+            <p className="contact-map__caption">
+              Mapa ilustrativo do Google Maps. A localização não corresponde a uma unidade real.
+            </p>
+
+            <div className="contact-map__frame">
+              <iframe
+                src={mapEmbedUrl}
+                title={`Mapa do Google Maps com a localização de ${institution.name}`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+
+            <a className="contact-map__link" href={mapExternalUrl} target="_blank" rel="noopener noreferrer">
+              Abrir no Google Maps
+              <span className="visually-hidden"> (abre em nova aba)</span>
+            </a>
+          </section>
+
           <Alert variant="warning" title="Dados fictícios">
             Endereço, telefone e e-mail são ilustrativos. Nenhum contato real deve ser feito por estes canais.
           </Alert>
@@ -125,27 +146,6 @@ function ContactPage() {
           </form>
         </section>
       </div>
-
-      <section className="contact-map" aria-labelledby="contato-mapa">
-        <h2 id="contato-mapa">Como chegar</h2>
-        <p className="contact-map__caption">
-          Mapa ilustrativo do Google Maps. A localização não corresponde a uma unidade real.
-        </p>
-
-        <div className="contact-map__frame">
-          <iframe
-            src={mapEmbedUrl}
-            title={`Mapa do Google Maps com a localização de ${institution.name}`}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-
-        <a className="contact-map__link" href={mapExternalUrl} target="_blank" rel="noopener noreferrer">
-          Abrir no Google Maps
-          <span className="visually-hidden"> (abre em nova aba)</span>
-        </a>
-      </section>
     </div>
   )
 }
