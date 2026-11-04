@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pt-BR">
+  <body>
+    <script>
+      const p = new URLSearchParams(location.search)
+      const roleId = p.get('role') || 'responsavel'
+      const unitId = p.get('unit') || 'unidade-sede'
+      const to = p.get('to') || '/portal/'
+      try {
+        window.sessionStorage.setItem('cei-portal-demonstracao', JSON.stringify({ roleId, unitId }))
+      } catch (error) {
+        document.write('falha: ' + error.message)
+      }
+      location.replace(to)
+    </script>
+  </body>
+</html>

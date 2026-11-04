@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+  <body style="margin: 0; font: 12px monospace">
+    <pre id="out">loading</pre>
+    <div id="frames"></div>
+    <script>
+      const widths = [320, 360, 375, 412, 768, 1024, 1366]
+      const params = new URLSearchParams(location.search)
+      const target = params.get('path') || '/portal/login'
+      const roleId = params.get('role') || 'responsavel'
+      const results = []
+
+      try {
+        window.sessionStorage.setItem(
+          'cei-portal-demonstracao',
+          JSON.stringify({ roleId, unitId: 'unidade-centro' }),
+        )
+      } catch (error) {
+        document.title = 'falha ao semear sessão'
+      }
+
+      const load = (w) =>
+        new Promise((resolve) => {
+          const frame = document.createElement('iframe')
+          frame.style.cssText = `width:${w}px;height:900px;border:0;display:block`
+          frame.src = target
+          frame.onload = () => {
+            setTimeout(() => {
+              const win = frame.contentWindow
+              const doc = frame.contentDocument
+              const offenders = [...doc.querySelectorAll('*')]
+                .map((el) => {
+                  const r = el.getBoundingClientRect()
+                  return {
+                    sel: el.tagName.toLowerCase() + (el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\s+/).join('.') : ''),
+                    right: Math.round(r.right),
+                    width: Math.round(r.width),
+                  }
+                })
+                .filter((item) => item.right > win.innerWidth + 1)
+                .slice(0, 6)
+
+              results.push({
+                requested: w,
+                innerWidth: win.innerWidth,
+                scrollWidth: doc.documentElement.scrollWidth,
+                bodyScrollWidth: doc.body.scrollWidth,
+                offenders,
+              })
+              resolve()
+            }, 700)
+          }
+          document.getElementById('frames').appendChild(frame)
+        })
+
+      ;(async () => {
+        for (const w of widths) await load(w)
+        document.getElementById('out').textContent = JSON.stringify(results, null, 1)
+      })()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head></head><body style="margin: 0; font: 12px monospace">
+    <pre id="out">[
+ {
+  "requested": 320,
+  "innerWidth": 320,
+  "scrollWidth": 305,
+  "bodyScrollWidth": 305,
+  "offenders": []
+ },
+ {
+  "requested": 360,
+  "innerWidth": 360,
+  "scrollWidth": 345,
+  "bodyScrollWidth": 345,
+  "offenders": []
+ },
+ {
+  "requested": 375,
+  "innerWidth": 375,
+  "scrollWidth": 360,
+  "bodyScrollWidth": 360,
+  "offenders": []
+ },
+ {
+  "requested": 412,
+  "innerWidth": 412,
+  "scrollWidth": 397,
+  "bodyScrollWidth": 397,
+  "offenders": []
+ },
+ {
+  "requested": 768,
+  "innerWidth": 768,
+  "scrollWidth": 805,
+  "bodyScrollWidth": 805,
+  "offenders": [
+   {
+    "sel": "article.ds-card",
+    "right": 805,
+    "width": 287
+   },
+   {
+    "sel": "header.ds-card__header",
+    "right": 780,
+    "width": 237
+   },
+   {
+    "sel": "div.ds-card__body",
+    "right": 780,
+    "width": 237
+   },
+   {
+    "sel": "p",
+    "right": 780,
+    "width": 237
+   },
+   {
+    "sel": "a",
+    "right": 780,
+    "width": 237
+   },
+   {
+    "sel": "p",
+    "right": 780,
+    "width": 237
+   }
+  ]
+ },
+ {
+  "requested": 1024,
+  "innerWidth": 1024,
+  "scrollWidth": 1009,
+  "bodyScrollWidth": 1009,
+  "offenders": []
+ },
+ {
+  "requested": 1366,
+  "innerWidth": 1366,
+  "scrollWidth": 1351,
+  "bodyScrollWidth": 1351,
+  "offenders": []
+ }
+]</pre>
+    <div id="frames"><iframe src="/trabalhe-conosco" style="width: 320px; height: 900px; border: 0px; display: block;"></iframe><iframe src="/trabalhe-conosco" style="width: 360px; height: 900px; border: 0px; display: block;"></iframe><iframe src="/trabalhe-conosco" style="width: 375px; height: 900px; border: 0px; display: block;"></iframe><iframe src="/trabalhe-conosco" style="width: 412px; height: 900px; border: 0px; display: block;"></iframe><iframe src="/trabalhe-conosco" style="width: 768px; height: 900px; border: 0px; display: block;"></iframe><iframe src="/trabalhe-conosco" style="width: 1024px; height: 900px; border: 0px; display: block;"></iframe><iframe src="/trabalhe-conosco" style="width: 1366px; height: 900px; border: 0px; display: block;"></iframe></div>
+    <script>
+      const widths = [320, 360, 375, 412, 768, 1024, 1366]
+      const target = new URLSearchParams(location.search).get('path') || '/portal/login'
+      const results = []
+
+      try {
+        window.sessionStorage.setItem(
+          'cei-portal-demonstracao',
+          JSON.stringify({ roleId: 'responsavel', unitId: 'unidade-centro' }),
+        )
+      } catch (error) {
+        document.title = 'falha ao semear sessão'
+      }
+
+      const load = (w) =>
+        new Promise((resolve) => {
+          const frame = document.createElement('iframe')
+          frame.style.cssText = `width:${w}px;height:900px;border:0;display:block`
+          frame.src = target
+          frame.onload = () => {
+            setTimeout(() => {
+              const win = frame.contentWindow
+              const doc = frame.contentDocument
+              const offenders = [...doc.querySelectorAll('*')]
+                .map((el) => {
+                  const r = el.getBoundingClientRect()
+                  return {
+                    sel: el.tagName.toLowerCase() + (el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\s+/).join('.') : ''),
+                    right: Math.round(r.right),
+                    width: Math.round(r.width),
+                  }
+                })
+                .filter((item) => item.right > win.innerWidth + 1)
+                .slice(0, 6)
+
+              results.push({
+                requested: w,
+                innerWidth: win.innerWidth,
+                scrollWidth: doc.documentElement.scrollWidth,
+                bodyScrollWidth: doc.body.scrollWidth,
+                offenders,
+              })
+              resolve()
+            }, 700)
+          }
+          document.getElementById('frames').appendChild(frame)
+        })
+
+      ;(async () => {
+        for (const w of widths) await load(w)
+        document.getElementById('out').textContent = JSON.stringify(results, null, 1)
+      })()
+    </script>
+  
+
+</body></html>

@@ -48,3 +48,4 @@ firebase-service-account*.json
 
 # docs
 .docs
+.AGENTS
