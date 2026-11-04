@@ -1,0 +1,8 @@
+/* Estilos globais próprios. Complementam o Bootstrap 5. */
+:root {
+  --brand-color: #0d6efd;
+}
+
+body {
+  min-height: 100svh;
+}
