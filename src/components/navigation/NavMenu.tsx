@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import type { ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import type { NavItem } from '../../types/navigation'
@@ -7,9 +8,11 @@ import './NavMenu.css'
 interface NavMenuProps {
   items: NavItem[]
   ariaLabel?: string
+  /** Ação em destaque exibida junto à navegação. */
+  cta?: ReactNode
 }
 
-function NavMenu({ items, ariaLabel = 'Navegação principal' }: NavMenuProps) {
+function NavMenu({ items, ariaLabel = 'Navegação principal', cta }: NavMenuProps) {
   const [isOpen, setIsOpen] = useState(false)
   const toggleRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
@@ -68,6 +71,7 @@ function NavMenu({ items, ariaLabel = 'Navegação principal' }: NavMenuProps) {
             </li>
           ))}
         </ul>
+        {cta ? <div className="ds-nav__cta">{cta}</div> : null}
       </div>
     </nav>
   )

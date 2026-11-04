@@ -55,6 +55,12 @@
   box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.25);
 }
 
+.ds-field__input--textarea {
+  min-height: 8rem;
+  resize: vertical;
+  line-height: var(--leading-body);
+}
+
 .ds-field__input:disabled {
   background-color: var(--color-neutral-soft);
   color: var(--color-muted);

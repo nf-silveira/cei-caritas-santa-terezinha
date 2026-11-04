@@ -76,6 +76,14 @@
   color: var(--color-surface);
 }
 
+.ds-nav__cta {
+  margin-top: var(--space-3);
+}
+
+.ds-nav__cta .ds-btn {
+  width: 100%;
+}
+
 @media (min-width: 768px) {
   .ds-nav__toggle {
     display: none;
@@ -93,5 +101,14 @@
   .ds-nav__list {
     flex-direction: row;
     gap: var(--space-1);
+  }
+
+  .ds-nav__cta {
+    margin-top: 0;
+    margin-left: var(--space-3);
+  }
+
+  .ds-nav__cta .ds-btn {
+    width: auto;
   }
 }

@@ -1,0 +1,39 @@
+.identity-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+
+.identity-card .ds-card__body {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.identity-card__image {
+  flex-shrink: 0;
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-background);
+}
+
+.identity-card p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  max-width: none;
+}
+
+@media (min-width: 768px) {
+  .identity-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .identity-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -4,4 +4,9 @@ export interface Institution {
   address: string
   phone: string
   email: string
+  hours: string
+  mission: string
+  vision: string
+  values: string[]
+  summary: string
 }
