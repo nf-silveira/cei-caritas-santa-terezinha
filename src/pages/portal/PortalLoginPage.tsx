@@ -12,13 +12,6 @@ import { getInstitution } from '../../services/institutionService'
 import type { PortalRoleId } from '../../types/portal'
 import './PortalLoginPage.css'
 
-type Feedback = 'idle' | 'recovery'
-
-interface FormErrors {
-  email?: string
-  password?: string
-}
-
 function PortalLoginPage() {
   const institution = getInstitution()
   const roles = getPortalRoles()
@@ -28,36 +21,16 @@ function PortalLoginPage() {
   const [password, setPassword] = useState('')
   const [roleId, setRoleId] = useState<PortalRoleId>(roles[0].id)
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-  const [errors, setErrors] = useState<FormErrors>({})
-  const [feedback, setFeedback] = useState<Feedback>('idle')
+  const [isRecoveryOpen, setIsRecoveryOpen] = useState(false)
 
   if (session) {
     return <Navigate to={`/portal/${session.roleId}`} replace />
   }
 
+  // Demonstração: não há banco de dados nem autenticação. O perfil escolhido define o acesso,
+  // e os campos de e-mail e senha são apenas ilustrativos.
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
-    const nextErrors: FormErrors = {}
-
-    if (!email.trim()) {
-      nextErrors.email = 'Informe um e-mail fictício para simular o acesso.'
-    } else if (!/^\S+@\S+\.\S+$/.test(email.trim())) {
-      nextErrors.email = 'Use o formato nome@exemplo.com.'
-    }
-
-    if (!password.trim()) {
-      nextErrors.password = 'Informe qualquer senha para simular o acesso.'
-    }
-
-    setErrors(nextErrors)
-
-    if (Object.keys(nextErrors).length > 0) {
-      setFeedback('idle')
-      return
-    }
-
-    // Demonstração: nenhuma credencial é validada ou enviada. Abre a área do perfil escolhido.
     login(roleId)
   }
 
@@ -99,9 +72,8 @@ function PortalLoginPage() {
               autoComplete="username"
               inputMode="email"
               value={email}
-              error={errors.email}
+              hint="Campo ilustrativo. Nenhum dado é conferido ou enviado."
               onChange={(event) => setEmail(event.target.value)}
-              required
             />
 
             <FormField
@@ -110,9 +82,8 @@ function PortalLoginPage() {
               type={isPasswordVisible ? 'text' : 'password'}
               autoComplete="current-password"
               value={password}
-              error={errors.password}
+              hint="A entrada é liberada pelo perfil de demonstração escolhido."
               onChange={(event) => setPassword(event.target.value)}
-              required
               trailing={
                 <button
                   type="button"
@@ -129,12 +100,12 @@ function PortalLoginPage() {
             />
 
             <p className="login__recovery">
-              <button type="button" className="login__link" onClick={() => setFeedback('recovery')}>
+              <button type="button" className="login__link" onClick={() => setIsRecoveryOpen(true)}>
                 Esqueceu sua senha?
               </button>
             </p>
 
-            {feedback === 'recovery' ? (
+            {isRecoveryOpen ? (
               <Alert variant="info" title="Recuperação indisponível">
                 Este recurso não está disponível na demonstração. Nenhum e-mail é enviado e nenhuma senha é
                 armazenada.
@@ -160,12 +131,13 @@ function PortalLoginPage() {
             </div>
 
             <Button type="submit" size="lg" fullWidth iconRight={<ArrowRight size={18} />}>
-              Entrar
+              Entrar como {roles.find((role) => role.id === roleId)?.label.toLowerCase()}
             </Button>
           </form>
 
           <p className="login__demo-note">
-            Acesso demonstrativo. Nenhuma credencial real é solicitada, validada ou armazenada.
+            Acesso demonstrativo: o botão abre o portal com o perfil selecionado, sem validar senha. Nenhum dado
+            é enviado ou armazenado.
           </p>
 
           <p className="login__back">
