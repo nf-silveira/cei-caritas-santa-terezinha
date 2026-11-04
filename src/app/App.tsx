@@ -1,10 +1,13 @@
 import { BrowserRouter } from 'react-router-dom'
+import PortalSessionProvider from '../context/PortalSessionProvider'
 import AppRoutes from '../routes/AppRoutes'
 
 function App() {
   return (
     <BrowserRouter>
-      <AppRoutes />
+      <PortalSessionProvider>
+        <AppRoutes />
+      </PortalSessionProvider>
     </BrowserRouter>
   )
 }
