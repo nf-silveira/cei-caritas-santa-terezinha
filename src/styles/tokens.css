@@ -1,0 +1,75 @@
+/*
+ * Tokens do Design System — CEI Cáritas Santa Terezinha
+ * Fonte: .docs/00-DESIGN-SYSTEM-E-UX.md
+ * Nenhum componente deve declarar cor, fonte ou espaçamento fixo: use estes tokens.
+ * Breakpoints de referência (media queries min-width): 480px, 768px, 1024px, 1280px.
+ */
+:root {
+  /* Cores institucionais */
+  --color-primary: #145da8;
+  --color-primary-dark: #0b315b;
+  --color-primary-soft: #e8f0fa;
+  --color-secondary: #1b7a4b;
+  --color-secondary-strong: #145c39;
+  --color-secondary-soft: #e7f4ed;
+  --color-accent: #f4c542;
+  --color-accent-soft: #fdf4d8;
+  --color-accent-text: #6b4b00;
+  --color-background: #f5f8fc;
+  --color-surface: #ffffff;
+  --color-text: #182b3d;
+  --color-muted: #607184;
+  --color-border: #dce5ef;
+  --color-neutral-soft: #eef2f7;
+  --color-neutral-text: #45586b;
+  --color-danger: #b42318;
+  --color-danger-strong: #8f1c13;
+  --color-danger-soft: #fdecea;
+
+  /* Tipografia */
+  --font-sans:
+    'Inter', 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'Cascadia Code', Consolas, monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-h3: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+  --text-h2: clamp(1.5rem, 1.3rem + 0.9vw, 2rem);
+  --text-h1: clamp(1.875rem, 1.5rem + 1.8vw, 2.75rem);
+  --leading-tight: 1.25;
+  --leading-snug: 1.4;
+  --leading-body: 1.6;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Espaçamento (escala de 4px) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 5rem;
+
+  /* Layout */
+  --container-max: 75rem;
+  --container-padding: clamp(1rem, 4vw, 2rem);
+  --content-measure: 65ch;
+  --touch-min: 2.75rem;
+
+  /* Raios e sombras */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(24, 43, 61, 0.06), 0 2px 6px rgba(24, 43, 61, 0.06);
+  --shadow-md: 0 6px 18px rgba(24, 43, 61, 0.08);
+  --focus-ring: 0 0 0 3px rgba(20, 93, 168, 0.35);
+  --transition: 150ms ease;
+}

@@ -1,0 +1,207 @@
+.ds-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  padding-block: var(--space-2) var(--space-6);
+}
+
+.ds-demo__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: var(--content-measure);
+}
+
+.ds-demo__eyebrow {
+  margin: 0;
+  color: var(--color-secondary-strong);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ds-demo__lead {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.ds-demo__section {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.ds-demo__rows {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.ds-demo__stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.ds-demo__stack--narrow {
+  max-width: 24rem;
+}
+
+.ds-demo__grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+
+/* Paleta */
+.ds-demo__swatches {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-demo__swatch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.ds-demo__swatch-color {
+  display: block;
+  height: 3.25rem;
+  margin-bottom: var(--space-2);
+  border: 1px solid rgba(24, 43, 61, 0.08);
+  border-radius: var(--radius-sm);
+}
+
+.ds-demo__swatch-color--primary {
+  background-color: var(--color-primary);
+}
+
+.ds-demo__swatch-color--primary-dark {
+  background-color: var(--color-primary-dark);
+}
+
+.ds-demo__swatch-color--secondary {
+  background-color: var(--color-secondary);
+}
+
+.ds-demo__swatch-color--accent {
+  background-color: var(--color-accent);
+}
+
+.ds-demo__swatch-color--background {
+  background-color: var(--color-background);
+}
+
+.ds-demo__swatch-color--surface {
+  background-color: var(--color-surface);
+}
+
+.ds-demo__swatch-color--text {
+  background-color: var(--color-text);
+}
+
+.ds-demo__swatch-color--muted {
+  background-color: var(--color-muted);
+}
+
+.ds-demo__swatch-color--border {
+  background-color: var(--color-border);
+}
+
+.ds-demo__swatch-color--danger {
+  background-color: var(--color-danger);
+}
+
+.ds-demo__swatch-token {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.ds-demo__swatch-value {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.ds-demo__swatch-usage {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+/* Tipografia */
+.ds-demo__type-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-demo__type-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ds-demo__type-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.ds-demo__type-meta {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.ds-demo__type--h1 {
+  color: var(--color-primary-dark);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+}
+
+.ds-demo__type--h2 {
+  color: var(--color-primary-dark);
+  font-size: var(--text-h2);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+}
+
+.ds-demo__type--h3 {
+  color: var(--color-primary-dark);
+  font-size: var(--text-h3);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+}
+
+.ds-demo__type--body {
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+}
+
+.ds-demo__type--small {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 768px) {
+  .ds-demo {
+    gap: var(--space-8);
+  }
+}

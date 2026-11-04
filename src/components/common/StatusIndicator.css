@@ -1,0 +1,35 @@
+.ds-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+}
+
+.ds-status__dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background-color: currentColor;
+  flex-shrink: 0;
+}
+
+.ds-status--positive {
+  color: var(--color-secondary-strong);
+}
+
+.ds-status--warning {
+  color: var(--color-accent-text);
+}
+
+.ds-status--danger {
+  color: var(--color-danger-strong);
+}
+
+.ds-status--info {
+  color: var(--color-primary);
+}
+
+.ds-status--neutral {
+  color: var(--color-muted);
+}
